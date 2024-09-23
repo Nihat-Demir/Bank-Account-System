@@ -1,0 +1,2 @@
+C:/Users/acer/Desktop/advanced C/workspace/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/acer/Desktop/advanced C/workspace/build/CMakeFiles/ZERO_CHECK.dir
