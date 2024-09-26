@@ -1,13 +1,17 @@
 #include "Id_generator.hpp"
 
-Id_generator::Id_generator(){
+Id_generator::Id_generator(std::string bank_name) : bankName(bank_name) { // 
+    CreateFileName();
     bool controlFile();
+    
 }
 Id_generator::~Id_generator(){}
 
 std::string Id_generator::openFile(){
 
-    std::ifstream file("id_generator.txt");
+     
+
+    std::ifstream file(file_name);
 
     std::string line;
     std::string fileContent;
@@ -19,13 +23,13 @@ std::string Id_generator::openFile(){
     
 }
 
-bool Id_generator::controlFile(std::string id){
+bool Id_generator::controlFile(){
 
-    std::ifstream file("id_generator.txt");
+    std::ifstream file(file_name);
 
     if(!file){
 
-        std::ofstream createdFile("id_generator.txt");
+        std::ofstream createdFile(file_name);
         createdFile << "0";
         createdFile.close();
         return false;
@@ -69,12 +73,18 @@ std::string Id_generator::generateId(){
 
 void Id_generator::writeFile(std::string new_id){
 
-    std::ofstream file("id_generator.txt",std::ios::app);
+    std::ofstream file(file_name,std::ios::app);
 
     if(file.is_open()){
         file<<new_id<<std::endl;
 
     }
     file.close();
+
+}
+
+void Id_generator::CreateFileName(){
+
+    file_name = "id_genegeator_" + bankName + ".txt";
 
 }
