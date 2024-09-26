@@ -1,14 +1,15 @@
 #include "account.hpp"
 
-account::account(std::string name,std::string surname){
+account::account(std::string name,std::string surname,std::string bank_name){
 
-    Id_generator Id_generator;
-    account_number_generator Account_number_generator;
+    Id_generator Id_generator(bank_name);
+    account_number_generator Account_number_generator(bank_name);
 
     this->name = name;
     this->surname = surname;
     this->ID = Id_generator.generateId();
     this->accountNumber = Account_number_generator.generateaccount_number();
+    this->bank_name = bank_name;
 
 };
 
@@ -51,4 +52,9 @@ std::string account::getSurname(){
 std::string account::getAccountNumber(){
 
     return this->accountNumber;
+}
+
+std::string account::getBankName(){
+
+    return this->bank_name;
 }

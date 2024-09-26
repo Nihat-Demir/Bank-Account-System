@@ -2,14 +2,12 @@
 
 Id_generator::Id_generator(std::string bank_name) : bankName(bank_name) { // 
     CreateFileName();
-    bool controlFile();
+    controlFile();
     
 }
 Id_generator::~Id_generator(){}
 
 std::string Id_generator::openFile(){
-
-     
 
     std::ifstream file(file_name);
 
@@ -20,7 +18,8 @@ std::string Id_generator::openFile(){
         fileContent+=line;
 
     }
-    
+    file.close();
+    return fileContent;
 }
 
 bool Id_generator::controlFile(){

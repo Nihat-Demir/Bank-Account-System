@@ -15,6 +15,8 @@ private:
     std::string name;
     std::string surname;
     std::string accountNumber;
+    std::string bank_name;
+
     
     
 public:
@@ -23,7 +25,7 @@ public:
      * @brief
      */
 
-    account(std::string name,std::string surname);
+    account(std::string name,std::string surname,std::string bank_name);
     ~account();
     /**
      * @brief Setter
@@ -40,5 +42,6 @@ public:
     std::string getName();
     std::string getSurname();
     std::string getAccountNumber();
+    std::string getBankName();
 };
 

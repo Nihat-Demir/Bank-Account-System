@@ -1,13 +1,14 @@
 #include "account_number_generator.hpp"
 
-account_number_generator::account_number_generator(){
+account_number_generator::account_number_generator(std::string bankName):bank_name(bankName){
+    createFileName();
     bool controlFile();
 }
 account_number_generator::~account_number_generator(){}
 
 std::string account_number_generator::openFile(){
 
-    std::ifstream file("account_number_generator.txt");
+    std::ifstream file(file_name);
 
     std::string line;
     std::string fileContent;
@@ -21,11 +22,11 @@ std::string account_number_generator::openFile(){
 
 bool account_number_generator::controlFile(std::string account_number){
 
-    std::ifstream file("account_number_generator.txt");
+    std::ifstream file(file_name);
 
     if(!file){
 
-        std::ofstream createdFile("account_number_generator.txt");
+        std::ofstream createdFile(file_name);
         createdFile << "0";
         createdFile.close();
         return false;
@@ -69,7 +70,7 @@ std::string account_number_generator::generateaccount_number(){
 
 void  account_number_generator::writeFile(std::string new_account_number){
 
-    std::ofstream file("account_number_generator.txt",std::ios::app);
+    std::ofstream file(file_name,std::ios::app);
 
     if(file.is_open()){
         file<<new_account_number<<std::endl;
@@ -77,4 +78,8 @@ void  account_number_generator::writeFile(std::string new_account_number){
     }
     file.close();
 
+}
+
+void account_number_generator::createFileName(){
+    file_name = "account_namber_generator_" + bank_name + ".txt";
 }
